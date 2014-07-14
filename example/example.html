@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>   
+    <title>Example 1</title>
+</head>
+<body>
+    
+    <input type="date" />
+    
+    
+    <!-- Required scripts -->
+    <script src='https://code.jquery.com/jquery-2.1.0.min.js'></script>
+    <script src='../src/cross-datepicker.js'></script>
+    
+    <script>
+    $(function() {
+        $("input[type='date']").cdp({
+            hideInput: false
+        });
+    });
+    </script>
+    
+</body>
+</html>
