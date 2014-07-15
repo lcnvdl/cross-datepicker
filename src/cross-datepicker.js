@@ -52,15 +52,15 @@
         if(o.hideInput)
             e.hide();
             
-        var cnt = $("<div>").addClass("cdp-container").data("input", e).insertBefore(e);
+        var cnt = $("<div>").addClass(o.classes.container).data("input", e).insertBefore(e);
         
         //  Data
         var days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         
         //  Read format        
-        var d = $("<select>").addClass("cdp-select cdp-d"),
-            m = $("<select>").addClass("cdp-select cdp-m"),
-            y = $("<select>").addClass("cdp-select cdp-y");
+        var d = $("<select>").addClass(o.classes.controls).addClass(o.classes.days),
+            m = $("<select>").addClass(o.classes.controls).addClass(o.classes.months),
+            y = $("<select>").addClass(o.classes.controls).addClass(o.classes.year);
         
         var getFormat = function(format) {
         
@@ -315,7 +315,14 @@
         years: ["now", -100],    //  [initial year, final year] or ["now", relative years count] or ["now", relative years from, relative years count]
         months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
         addNullOption: false,
-        nullOptionText: "Select"
+        nullOptionText: "Select",
+        classes: {
+            container: "cdp-container",
+            controls: "cdp-select",
+            days: "cdp-d",
+            months: "cdp-m",
+            years: "cdp-y"
+        }
     };
     
     
