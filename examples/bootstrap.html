@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Example 2</title>
+    
+    <!-- Twitter bootstrap -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h1>Twitter Bootstrap Example</h1>
+    <br/>
+    <br/>
+    
+    <form>
+        <input type="text" />
+    </form>
+    
+    <!-- Required scripts -->
+    <script src='https://code.jquery.com/jquery-2.1.0.min.js'></script>
+    <script src='../src/cross-datepicker.js'></script>
+    
+    <!-- Twitter bootstrap -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+    <!-- Start -->
+    <script>
+    $(function() {
+        $("input").cdp({
+            years: ["now", -17, -83],
+            format: "dd/mmmm/yy",
+            
+            /* Twitter Bootstrap Classes */
+            classes: {
+                container: "form-inline",
+                controls: "form-control"
+            }
+        });
+    });
+    </script>
+    
+</body>
+</html>
