@@ -52,15 +52,15 @@
         if(o.hideInput)
             e.hide();
             
-        var cnt = $("<div>").addClass(o.classes.container).data("input", e).insertBefore(e);
+        var cnt = $("<div>").addClass(o.classes.container || "").data("input", e).insertBefore(e);
         
         //  Data
         var days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         
         //  Read format        
-        var d = $("<select>").addClass(o.classes.controls).addClass(o.classes.days),
-            m = $("<select>").addClass(o.classes.controls).addClass(o.classes.months),
-            y = $("<select>").addClass(o.classes.controls).addClass(o.classes.year);
+        var d = $("<select>").addClass(o.classes.controls || "").addClass(o.classes.days || ""),
+            m = $("<select>").addClass(o.classes.controls || "").addClass(o.classes.months || ""),
+            y = $("<select>").addClass(o.classes.controls || "").addClass(o.classes.year || "");
         
         var getFormat = function(format) {
         
