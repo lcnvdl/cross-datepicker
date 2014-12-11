@@ -3,6 +3,13 @@ cross-datepicker
 
 Cross-DatePicker es un plugin para jQuery que permite generar campos para obtener una fecha de manera sencilla y cross-browser.
 
+## Uso simple
+```
+$(function() {
+    $("input[type='date']").cdp();
+});
+```
+
 ## Uso (con las opciones default)
 
 ```
@@ -30,23 +37,23 @@ $(function() {
 });
 ```
 
-* **addNullOption** *(No testeado)* : agrega un campo vacÌo dentro de cada *select*.
-* **classes**: clases que se incluir·n en los elementos.
+* **addNullOption** *(No testeado)* : agrega un campo vac√≠o dentro de cada *select*.
+* **classes**: clases que se incluir√°n en los elementos.
 * **format**: formato en el que se va a mostrar la fecha.
 * **hideInput**: indica si debe ocultar el elemento que cross-datepicker reemplaza.
-* **inputFormat**: formato en el que la fecha se traducir· dentro del input reemplazado.
+* **inputFormat**: formato en el que la fecha se traducir√° dentro del input reemplazado.
 * **months**: texto de los meses. Con esto se pueden realizar traducciones a otros idiomas.
-* **nullOptionText**: texto para el campo vacÌo (en caso de que la opciÛn **addNullOption** estÈ activada).
-* **years**: rango de aÒos. Puede ser de tres formas:
-  + [1900, 2014] mostrar· desde el aÒo 1900 hasta el 2014
-  + ["now", -100] mostrar· desde el aÒo actual hasta el aÒo actual -100. Si el aÒo actual es 2014 mostrar· desde 1914  hasta el 2014.
-  + ["now", -10, -100] mostrar· desde el aÒo actual -10 hasta el aÒo actual -110. Si el aÒo actual es 2014, mostrar· entonces desde el 1904 hasta el 2004.
+* **nullOptionText**: texto para el campo vac√≠o (en caso de que la opci√≥n **addNullOption** est√© activada).
+* **years**: rango de a√±os. Puede ser de tres formas:
+  + [1900, 2014] mostrar√° desde el a√±o 1900 hasta el 2014
+  + ["now", -100] mostrar√° desde el a√±o actual hasta el a√±o actual -100. Si el a√±o actual es 2014 mostrar√° desde 1914  hasta el 2014.
+  + ["now", -10, -100] mostrar√° desde el a√±o actual -10 hasta el a√±o actual -110. Si el a√±o actual es 2014, mostrar√° entonces desde el 1904 hasta el 2004.
 
 ## Ejemplos
 
 Ver archivos en carpeta "examples".
 
-## CrÈditos
+## Cr√©ditos
 Creado por @lcnvdl. http://www.lucianorasente.com
 
 ## Extra
