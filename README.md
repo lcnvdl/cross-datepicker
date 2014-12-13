@@ -48,6 +48,7 @@ $(function() {
   + [1900, 2014] mostrará desde el año 1900 hasta el 2014
   + ["now", -100] mostrará desde el año actual hasta el año actual -100. Si el año actual es 2014 mostrará desde 1914  hasta el 2014.
   + ["now", -10, -100] mostrará desde el año actual -10 hasta el año actual -110. Si el año actual es 2014, mostrará entonces desde el 1904 hasta el 2004.
+  + ["now", 10, -100] mostrará desde el año actual +10 hasta el año actual -90. Si el año actual es 2014, mostrará entonces desde el 1924 hasta el 2024.
 
 ## Ejemplos
 
