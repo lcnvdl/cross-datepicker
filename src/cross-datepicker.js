@@ -331,7 +331,7 @@
         });
         
         //  Save
-        $.fn.cdp.statics.inputs = {
+        this.inputs = {
             d: d,
             y: y,
             m: m
@@ -407,7 +407,6 @@
     };
     
     $.fn.cdp.statics = {
-        inputs: {},
         fns: {
             set: function(e, arg) {
             
@@ -426,14 +425,12 @@
                     d = arg.day || arg.d;
                 }
                 
-                st.inputs.y.val(String(y));
-                st.inputs.m.val(String(m));
-                st.inputs.d.val(String(d));
+                obj.inputs.y.val(String(y));
+                obj.inputs.m.val(String(m));
+                obj.inputs.d.val(String(d));
                 
                 obj.updateInput();                
             }
         }
     };
-    
-    
 })();
