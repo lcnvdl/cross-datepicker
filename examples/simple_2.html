@@ -4,12 +4,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Simple 1</title>
+    <title>Simple 2</title>
 </head>
 <body>
     
-    <input type="date" />
-    
+    <input type="date" data-initial-day="20" data-initial-year="2010" data-initial-month="4" />
     
     <!-- Required scripts -->
     <script src='https://code.jquery.com/jquery-2.1.0.min.js'></script>
@@ -17,9 +16,7 @@
     
     <script>
     $(function() {
-        $("input[type='date']").cdp({
-            hideInput: false
-        });
+        $("input[type='date']").cdp();
     });
     </script>
     

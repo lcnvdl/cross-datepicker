@@ -1,7 +1,7 @@
 /**
  *
  *  Cross-DatePicker
- *  Version 0.1
+ *  Version 0.2
  *
  *  @lcnvdl
  *  http://www.lucianorasente.com
@@ -14,11 +14,12 @@
         return typeof x === 'number' ? x ? x < 0 ? -1 : 1 : x === x ? 0 : NaN : NaN;
     };
     
-    //  TODO Calcular año bisiesto
-    //var bisiesto = function(year)
-    //{
+    //  TODO Calcular aÃ±o bisiesto
+    var bisiesto = function(year)
+    {
+        return true;
     //    return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) ? 1 : 0;
-    //};
+    };
  
     $.fn.insertAt = $.fn.insertAt || function(index, $parent) {
         return this.each(function() {
@@ -30,30 +31,14 @@
         });
     };
  
-    $.fn.cdp = function (o) {
-    
-        o = $.extend({}, $.fn.cdp.defaults, o);
-
-        var e = $(this);
-
-        if (e.length == 0) {
-            return this;
-        }
-        else if (e.length > 1) {
-            e.each(function () {
-                $(this).crossdp();
-            });
-
-            return this;
-        }
-
+    var Crossdp = function(e, o) {
         if (e.data("cross-datepicker")) {
             return this;
         }
         
-        if(!e.is("input")) {
-            throw "You can apply Cross-DatePicker only on an 'input' element";
-        }
+        e.attr("type", "text");
+        
+        o = $.extend({}, $.fn.cdp.defaults, o);
         
         if(o.hideInput)
             e.hide();
@@ -68,6 +53,9 @@
             m = $("<select>").addClass(o.classes.controls || "").addClass(o.classes.months || ""),
             y = $("<select>").addClass(o.classes.controls || "").addClass(o.classes.year || "");
         
+        /**
+         *  Gets the format metadata.
+         */
         var getFormat = function(format) {
         
             var f = {},
@@ -129,6 +117,9 @@
         
         //  Helpers
         
+        /**
+         *  Format a numeric day to string.
+         */
         var formatDay = function(day, format) {
             var text = String(day),
                 c = format || f.d.count;
@@ -139,7 +130,10 @@
             
             return text;
         };
-            
+        
+        /**
+         *  Format a numeric month to string.
+         */
         var formatMonth = function(month, format) {
             
             if(month > 12) {
@@ -166,7 +160,10 @@
             
             return text;
         };
-            
+        
+        /**
+         *  Format a numeric month to string.
+         */ 
         var formatYear = function(year, format) {
             var text = String(year),
                 c = format || f.y.count;
@@ -181,17 +178,29 @@
             return text;
         };
         
+        var parseYear = function(date, format) {
+            //  TODO
+        };
+        
         //  Update input function
         
-        var updateInput = function() {
-            
+        var formatDate = function(resultFormat, readFormat, years, months, days) {
             var a = ["d", "m", "y"],
-                result = o.inputFormat;
+                result = resultFormat;
+                
+            if(typeof days === 'string') 
+                days = parseInt(days);
+                
+            if(typeof months === 'string') 
+                months = parseInt(months);
+                
+            if(typeof years === 'string') 
+                years = parseInt(years);
             
             for(var i = 0; i < a.length; i++) {
-                
-                var ch = a[i],
-                    format = iF[ch],
+                    
+                var ch = a[i],                      /*  Example: a[0]='d'      */
+                    format = readFormat[ch],        /*  Example: uF['d']='dd'     */
                     word = "",
                     formatted = "";
                 
@@ -200,19 +209,31 @@
                 }
                 
                 if(ch == "d") {
-                    formatted = formatDay(parseInt(d.val()), format.count);
+                    formatted = formatDay(days, format.count);
                 }
                 else if(ch == "m") {
-                    formatted = formatMonth(parseInt(m.val()), format.count);
+                    formatted = formatMonth(months, format.count);
                 }
                 else {
-                    formatted = formatYear(parseInt(y.val()), format.count);
+                    formatted = formatYear(years, format.count);
                 }
                 
                 result = result.replace(word, formatted);                
             }
             
-            e.val(result);
+            return result;
+        };
+        
+        var updateInput = function() {        
+            e.val(formatDate(o.inputFormat, iF, y.val(), m.val(), d.val()));            
+        };
+        
+        this.updateInput = function() {
+            updateInput();
+        };
+        
+        var updateFromInput = function() {        
+            //  TODO
             
         };
         
@@ -222,6 +243,9 @@
         
         d.data("days", 0);
         
+        /**
+         *  Days of determinated month.
+         */
         var generateDays = function(month) {
             
             if(d.data("days") == days[month-1]) {
@@ -306,11 +330,62 @@
             updateInput();
         });
         
+        //  Save
+        $.fn.cdp.statics.inputs = {
+            d: d,
+            y: y,
+            m: m
+        };
+        
         //  Finish
+        
+        if(e.data("initial-day")) {
+            $(function() {
+                $.fn.cdp.statics.fns.set(e, [
+                    e.data("initial-year"), 
+                    e.data("initial-month"), 
+                    e.data("initial-day")]);
+            });
+        }
         
         updateInput();
 
-        e.data("cross-datepicker", true);
+        e.data("cross-datepicker", this);
+    };
+ 
+    $.fn.cdp = function (o, arg) {
+
+        var e = $(this);
+
+        if (e.length == 0) {
+            return this;
+        }
+        else if (e.length > 1) {
+            e.each(function () {
+                $(this).cdp(o);
+            });
+
+            return this;
+        }
+        
+        if(!e.is("input")) {
+            throw "You can apply Cross-DatePicker only on an 'input' element";
+        }
+
+        if(typeof o === 'string') {
+            
+            var st = $.fn.cdp.statics;
+            if(!st.fns[o]) {
+                console.error("Unknown function "+o);
+            }
+
+            st.fns[o](e, arg);
+            
+            return this;
+        }
+        
+        var cdp = new Crossdp(e, o);
+        
         return this;
     }
     
@@ -328,6 +403,35 @@
             days: "cdp-d",
             months: "cdp-m",
             years: "cdp-y"
+        }
+    };
+    
+    $.fn.cdp.statics = {
+        inputs: {},
+        fns: {
+            set: function(e, arg) {
+            
+                var st = $.fn.cdp.statics,
+                    obj = e.data("cross-datepicker"),
+                    y,m,d;
+                
+                if($.isArray(arg)) {
+                    y = arg[0];
+                    m = arg[1];
+                    d = arg[2];
+                }
+                else {
+                    y = arg.year || arg.y;
+                    m = arg.month || arg.m;
+                    d = arg.day || arg.d;
+                }
+                
+                st.inputs.y.val(String(y));
+                st.inputs.m.val(String(m));
+                st.inputs.d.val(String(d));
+                
+                obj.updateInput();                
+            }
         }
     };
     

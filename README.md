@@ -4,6 +4,13 @@ cross-datepicker
 Cross-DatePicker es un plugin para jQuery que permite generar campos para obtener una fecha de manera sencilla y cross-browser.
 
 ## Uso simple
+
+### Html
+```
+<input type="date" />
+```
+
+### Javascript
 ```
 $(function() {
     $("input[type='date']").cdp();
@@ -12,6 +19,12 @@ $(function() {
 
 ## Uso (con las opciones default)
 
+### Html
+```
+<input type="date" />
+```
+
+### Javascript
 ```
 $(function() {
 
@@ -49,6 +62,26 @@ $(function() {
   + ["now", -100] mostrará desde el año actual hasta el año actual -100. Si el año actual es 2014 mostrará desde 1914  hasta el 2014.
   + ["now", -10, -100] mostrará desde el año actual -10 hasta el año actual -110. Si el año actual es 2014, mostrará entonces desde el 1904 hasta el 2004.
   + ["now", 10, -100] mostrará desde el año actual +10 hasta el año actual -90. Si el año actual es 2014, mostrará entonces desde el 1924 hasta el 2024.
+
+
+## Funciones
+
+* **set**: establece la fecha del input de forma programática.
+```
+// Uso 1
+$("#myElement").cbp("set", [2014,04,22])
+
+// Uso 2
+$("#myElement").cbp("set", {y: 2014, m: 04, d: 22})
+
+// Uso 3
+$("#myElement").cbp("set", {year: 2014, month: 04, day: 22})
+```
+
+## Atributos especiales
+```
+<input type="date" data-initial-day="20" data-initial-year="2010" data-initial-month="4" />
+```
 
 ## Ejemplos
 
