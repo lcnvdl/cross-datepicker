@@ -1,10 +1,11 @@
 /**
  *
  *  Cross-DatePicker
- *  Version 0.2
+ *  Version 0.3
  *
  *  @lcnvdl
  *  http://www.lucianorasente.com
+ *  https://github.com/lcnvdl/cross-datepicker
  *
  */
  
@@ -418,6 +419,12 @@
                     y = arg[0];
                     m = arg[1];
                     d = arg[2];
+                }
+                else if(typeof arg === 'string') {
+                    var array = arg.split("-");
+                    y = parseInt(arg[0]);
+                    m = parseInt(arg[1]);
+                    d = parseInt(arg[2]);
                 }
                 else {
                     y = arg.year || arg.y;

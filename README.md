@@ -68,14 +68,17 @@ $(function() {
 
 * **set**: establece la fecha del input de forma programática.
 ```
-// Uso 1
+// Uso 1 - Array [yyyy,mm,dd]
 $("#myElement").cbp("set", [2014,04,22])
 
-// Uso 2
+// Uso 2 - Array asociativa
 $("#myElement").cbp("set", {y: 2014, m: 04, d: 22})
 
-// Uso 3
+// Uso 3 - Array asociativa
 $("#myElement").cbp("set", {year: 2014, month: 04, day: 22})
+
+// Uso 4 - String "yyyy-mm-dd"
+$("#myElement").cbp("set", "2014-04-22")
 ```
 
 ## Atributos especiales
