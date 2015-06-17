@@ -422,9 +422,9 @@
                 }
                 else if(typeof arg === 'string') {
                     var array = arg.split("-");
-                    y = parseInt(arg[0]);
-                    m = parseInt(arg[1]);
-                    d = parseInt(arg[2]);
+                    y = parseInt(array[0]);
+                    m = parseInt(array[1]);
+                    d = parseInt(array[2]);
                 }
                 else {
                     y = arg.year || arg.y;
