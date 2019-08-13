@@ -6,12 +6,12 @@ Cross-DatePicker es un plugin para jQuery que permite generar campos para obtene
 ## Uso simple
 
 ### Html
-```
+```html
 <input type="date" />
 ```
 
 ### Javascript
-```
+```javascript
 $(function() {
     $("input[type='date']").cdp();
 });
@@ -20,12 +20,12 @@ $(function() {
 ## Uso (con las opciones default)
 
 ### Html
-```
+```html
 <input type="date" />
 ```
 
 ### Javascript
-```
+```javascript
 $(function() {
 
     $("input[type='date']").cdp({
@@ -67,7 +67,7 @@ $(function() {
 ## Funciones
 
 * **set**: establece la fecha del input de forma programática.
-```
+```javascript
 // Uso 1 - Array [yyyy,mm,dd]
 $("#myElement").cbp("set", [2014,04,22])
 
@@ -82,7 +82,7 @@ $("#myElement").cbp("set", "2014-04-22")
 ```
 
 ## Atributos especiales
-```
+```html
 <input type="date" data-initial-day="20" data-initial-year="2010" data-initial-month="4" />
 ```
 
