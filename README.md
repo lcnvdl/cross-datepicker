@@ -4,6 +4,8 @@ cross-datepicker
 Cross-DatePicker es un plugin para jQuery que permite generar campos para obtener una fecha de manera sencilla y cross-browser.
 
 ## Uso simple
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flcnvdl%2Fcross-datepicker.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Flcnvdl%2Fcross-datepicker?ref=badge_shield)
+
 
 ### Html
 ```html
@@ -96,3 +98,7 @@ Creado por @lcnvdl. http://www.lucianorasente.com
 ## Extra
 
 README redactado utilizando http://dillinger.io/. Muchas gracias.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flcnvdl%2Fcross-datepicker.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Flcnvdl%2Fcross-datepicker?ref=badge_large)
